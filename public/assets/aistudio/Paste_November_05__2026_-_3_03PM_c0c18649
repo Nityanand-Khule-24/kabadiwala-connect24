@@ -1,0 +1,2250 @@
+# MASTER DEVELOPMENT PROMPT
+# KABADIWALA CONNECT
+## Digital Scrap Passport & Collector Empowerment Network
+
+Act as a senior full-stack software architect, UI/UX designer, React Native developer, React web developer, FastAPI backend engineer, database designer, and QA engineer.
+
+Your task is to design, develop, and deliver a **complete, functional, full-stack application called “Kabadiwala Connect.”**
+
+Build a real application with connected frontend interfaces, backend APIs, authentication, database operations, and role-based access control. Do not create only a landing page, static UI, or disconnected frontend prototype.
+
+The application must support three user groups:
+
+1. Scrap Collectors — Mobile Application
+2. Scrap Recyclers — Web Dashboard
+3. Platform Administrators — Web Dashboard
+
+All three interfaces must use the same backend and shared Supabase PostgreSQL database.
+
+---
+
+# 1. PROJECT OVERVIEW
+
+## Project Name
+Kabadiwala Connect
+
+## Project Tagline
+“Turning Scrap into Opportunity.”
+
+## Project Concept
+Kabadiwala Connect is a digital platform that connects informal scrap collectors, verified recyclers, and platform administrators through a transparent, technology-enabled recycling network.
+
+The platform helps scrap collectors discover fair material prices, create scrap listings, connect with recyclers, manage pickup requests, track earnings, and maintain a digital record of their scrap transactions.
+
+Recyclers can discover available scrap, publish material buying rates, make offers, manage orders, and maintain transaction records.
+
+Administrators can manage the platform, verify recyclers, monitor transactions, manage material categories, and maintain platform transparency.
+
+## Problem Statement
+
+Informal scrap collectors in India often face challenges such as:
+
+- Lack of transparent scrap prices.
+- Dependence on intermediaries.
+- Difficulty finding verified recyclers.
+- Limited access to digital transaction records.
+- Unorganized pickup and collection processes.
+- Lack of traceability for recyclable materials.
+- Limited access to digital platforms due to language and technology barriers.
+
+Kabadiwala Connect aims to solve these problems through a simple, accessible, and transparent digital recycling ecosystem.
+
+## Main Objectives
+
+- Empower informal scrap collectors.
+- Improve transparency in scrap pricing.
+- Connect collectors directly with verified recyclers.
+- Digitize scrap collection and transaction records.
+- Generate QR-based Digital Scrap Passports.
+- Support multilingual and voice-assisted interaction.
+- Improve recycling traceability.
+- Provide administrators with centralized platform management.
+
+---
+
+# 2. REQUIRED APPLICATIONS
+
+Develop the following three applications.
+
+## A. Collector Mobile Application
+
+A mobile application for scrap collectors to:
+
+- Register and log in.
+- Create scrap listings.
+- Upload scrap images.
+- Enter material type and quantity.
+- View estimated scrap value.
+- Discover recyclers.
+- Receive recycler offers.
+- Accept or reject offers.
+- Manage pickup requests.
+- Track transactions.
+- View earnings.
+- Generate and scan QR Scrap Passports.
+- Receive notifications.
+- Use Marathi, Hindi, and English.
+- Access saved drafts while offline.
+
+## B. Recycler Web Dashboard
+
+A professional web dashboard for scrap recyclers to:
+
+- Register and log in.
+- Complete recycler profile information.
+- Submit verification documents.
+- Set material buying rates.
+- Discover available scrap listings.
+- Filter listings.
+- Make offers to collectors.
+- Manage accepted orders.
+- Schedule pickups or handovers.
+- Record payments.
+- Track material purchases.
+- View transaction history.
+- View business analytics.
+
+## C. Admin Web Dashboard
+
+A centralized administrative application to:
+
+- Log in through secure admin authentication.
+- Manage collectors.
+- Manage recyclers.
+- Verify recycler accounts.
+- Manage material categories.
+- Manage indicative scrap prices.
+- Monitor scrap listings.
+- Monitor transactions.
+- Manage complaints.
+- Manage notifications.
+- View platform analytics.
+- Manage traceability records.
+- View audit logs.
+
+The admin dashboard must not allow public admin registration.
+
+---
+
+# 3. TECHNOLOGY STACK
+
+Use the following technologies.
+
+## Collector Mobile App
+
+- React Native
+- Expo
+- JavaScript
+- Expo Router
+- React Native Paper
+- Material Design 3
+- Zustand
+- TanStack Query
+- Axios
+- Expo SQLite
+- Expo Camera
+- Expo Image Picker
+- Expo Location
+- Expo Secure Store
+- Expo Speech
+- Expo Localization
+- React Native Reanimated
+- React Hook Form
+- Zod
+
+The application must be compatible with Expo Go wherever possible.
+
+Avoid unnecessary native modules that prevent testing through Expo Go. If a feature requires a development build, clearly identify it and provide setup instructions.
+
+## Recycler and Admin Web Applications
+
+- React
+- Vite
+- JavaScript
+- Tailwind CSS
+- React Router
+- Zustand
+- TanStack Query
+- Axios
+- Recharts
+- Lucide React
+- Framer Motion
+- React Hook Form
+- Zod
+
+## Backend
+
+- Python
+- FastAPI
+- SQLAlchemy
+- Pydantic
+- Alembic
+- Supabase Auth JWT verification
+- Pandas
+- Scikit-learn for optional AI services
+
+## Database and Cloud Services
+
+- Supabase PostgreSQL — Primary database
+- Supabase Auth — User authentication
+- Supabase Storage — Scrap images and verification documents
+- Supabase Row Level Security — Database security
+- Supabase Realtime — Optional live updates
+- FastAPI — Centralized business logic and REST API
+
+## Important Database Rule
+
+**Supabase PostgreSQL must be the single shared primary database.**
+
+The Collector Mobile App, Recycler Dashboard, and Admin Dashboard must communicate with the same backend and database.
+
+Use Expo SQLite only for:
+
+- Local drafts.
+- Offline caching.
+- Pending sync operations.
+- Temporary local data.
+
+Do not create separate disconnected databases for the mobile, recycler, and admin applications.
+
+Do not expose the Supabase service-role key in any frontend application.
+
+---
+
+# 4. DESIGN SYSTEM — PARROT GREEN & WHITE
+
+Create a modern, visually appealing, premium eco-tech design using a consistent **Parrot Green and White** theme.
+
+The application must feel like a modern recycling technology startup.
+
+Avoid boring, generic, outdated, or plain CRUD-style interfaces.
+
+## Color Palette
+
+Use these colors consistently throughout all three applications.
+
+| Color | Hex Code | Usage |
+|---|---|---|
+| Parrot Green | #7ED957 | Branding, highlights, visual accents |
+| Primary Green | #35A853 | Primary buttons, actions, active navigation |
+| White | #FFFFFF | Main surfaces and cards |
+| Soft Green | #F4F9F1 | Page backgrounds |
+| Dark Green | #15351A | Headings and readable text |
+| Secondary Text | #6B7C6B | Supporting text |
+| Border | #E2EDE0 | Card and input borders |
+| Error Red | #D64545 | Errors and failed operations |
+| Warning Amber | #E5A000 | Pending verification and warnings |
+
+Use darker green for text or button backgrounds when needed to maintain accessibility and readable contrast.
+
+## Visual Style
+
+- Modern eco-tech startup design.
+- Clean, attractive, and professional.
+- White surfaces with parrot-green accents.
+- Rounded cards and buttons.
+- Soft shadows.
+- Subtle borders.
+- Clear typography.
+- Consistent spacing.
+- Modern icons.
+- Beautiful empty states.
+- Responsive layouts.
+- Attractive data visualizations.
+- Clear visual hierarchy.
+
+Use Inter, Manrope, or Plus Jakarta Sans for web typography.
+
+For mobile, use readable fonts supported by the platform.
+
+## Animation Requirements
+
+Use:
+
+- React Native Reanimated for mobile.
+- Framer Motion for web.
+
+Include:
+
+- Smooth splash screen animation.
+- Fade-in transitions.
+- Screen transition effects.
+- Button press feedback.
+- Subtle card entrance animations.
+- Loading skeletons.
+- Modal animations.
+- Success animations.
+- Smooth navigation transitions.
+
+Animations must be lightweight and professional.
+
+Avoid excessive bouncing, distracting effects, unnecessary 3D animations, or long transitions.
+
+## UI Quality
+
+The UI must be:
+
+- Simple for informal scrap collectors.
+- Easy to use for users with limited digital experience.
+- Professional for recyclers.
+- Modern and polished for administrators.
+- Responsive on mobile, tablet, and desktop.
+- Accessible with clear text and large touch targets.
+
+Use meaningful icons and labels. Do not use icons alone for important actions.
+
+---
+
+# 5. MOBILE APPLICATION — COLLECTOR
+
+Develop the Collector Mobile App using React Native, Expo, and Expo Router.
+
+## Required Application Flow
+
+The initial flow must be:
+
+Splash Screen → Welcome Screen → Login / Sign Up → Collector Dashboard
+
+The application must preserve the authenticated session.
+
+If a valid session exists, navigate directly to the correct dashboard.
+
+If the user is logged out, navigate to the authentication screens.
+
+If the authenticated user has a different role, redirect them to the appropriate interface or show a clear access message.
+
+Do not allow users to access screens belonging to other roles.
+
+## 5.1 Splash Screen
+
+Create an attractive branded splash screen.
+
+Requirements:
+
+- White or soft-green background.
+- Parrot-green recycling logo.
+- Kabadiwala Connect brand name.
+- Tagline: “Turning Scrap into Opportunity.”
+- Smooth logo animation.
+- Session validation.
+- Automatic navigation.
+
+## 5.2 Welcome Screen
+
+Include:
+
+- App logo.
+- App name.
+- Short introduction.
+- Illustration related to recycling.
+- Language selection.
+- Login button.
+- Create Account button.
+- Voice-guidance option.
+
+Use the Parrot Green and White theme.
+
+## 5.3 Authentication
+
+Create Login and Sign Up screens.
+
+### Login Screen
+
+Fields:
+
+- Phone number or email.
+- Password.
+- Show/hide password.
+- Remember session.
+- Forgot password.
+- Login button.
+- Create account link.
+
+### Registration Screen
+
+Fields:
+
+- Full name.
+- Phone number.
+- Email — optional if phone-based authentication is selected.
+- Password.
+- Confirm password.
+- Address.
+- City.
+- State.
+- PIN code.
+- Preferred language.
+- Terms acceptance.
+
+Use Supabase Auth for authentication.
+
+Implement appropriate authentication validation and error handling.
+
+Do not implement a fake login that simply navigates to the dashboard.
+
+### Authentication Requirements
+
+- Supabase authentication.
+- Session persistence.
+- Secure token handling.
+- Form validation.
+- Password reset.
+- Logout.
+- Loading indicators.
+- Error messages.
+- Duplicate account handling.
+- Role-based routing.
+- Protected routes.
+
+For phone OTP authentication, implement the actual Supabase-supported flow. Do not simulate OTP verification as a successful real authentication.
+
+## 5.4 Collector Dashboard
+
+Create a modern home dashboard.
+
+Display:
+
+- Welcome message.
+- Collector name.
+- Current location, if permission is granted.
+- Today's earnings.
+- Total earnings.
+- Active scrap listings.
+- Pending offers.
+- Upcoming pickups.
+- Recent transactions.
+- Current scrap prices.
+- Quick actions.
+
+Quick actions:
+
+- Add Scrap.
+- View Scrap Prices.
+- Find Recycler.
+- My Earnings.
+- My Scrap Passport.
+- Transaction History.
+
+Use a bottom navigation bar with:
+
+1. Home
+2. My Scrap
+3. Add Scrap
+4. Earnings
+5. Profile
+
+## 5.5 Create Scrap Listing
+
+Create a complete scrap listing form.
+
+Fields:
+
+- Scrap title.
+- Material category.
+- Material subtype.
+- Quantity.
+- Weight unit.
+- Estimated weight.
+- Scrap condition.
+- Description.
+- Scrap images.
+- Pickup address.
+- PIN code.
+- Preferred pickup date.
+- Preferred pickup time.
+- Additional notes.
+
+Material categories:
+
+- Iron.
+- Steel.
+- Aluminum.
+- Copper.
+- Brass.
+- Plastic.
+- Paper.
+- Cardboard.
+- Glass.
+- E-waste.
+- PCB.
+- Batteries.
+- Other recyclable materials.
+
+Requirements:
+
+- Image upload.
+- Camera integration.
+- Image preview.
+- Form validation.
+- Save draft.
+- Submit listing.
+- Loading states.
+- Success confirmation.
+- Backend integration.
+- Offline draft support.
+
+Do not hardcode the material categories as the only source. Load categories from the backend.
+
+## 5.6 Estimated Scrap Value
+
+Display an indicative estimated scrap value based on:
+
+- Material category.
+- Material subtype.
+- Weight.
+- Current indicative price.
+
+Use the formula:
+
+Estimated Value = Weight × Indicative Price per Unit
+
+Clearly display that the estimate is indicative and may change after physical inspection.
+
+The final transaction amount must be determined by the agreed recycler offer and confirmed weight.
+
+## 5.7 Scrap Listing Details
+
+Display:
+
+- Scrap images.
+- Material details.
+- Estimated value.
+- Listing status.
+- Available recycler offers.
+- Accepted offer.
+- Pickup details.
+- Transaction status.
+- QR Scrap Passport.
+
+Allow the collector to:
+
+- Edit eligible listings.
+- Cancel eligible listings.
+- View offers.
+- Accept an offer.
+- Reject an offer.
+- Track the order.
+
+## 5.8 Recycler Discovery
+
+Create a recycler discovery screen.
+
+Display:
+
+- Recycler name.
+- Business name.
+- Verification status.
+- Address.
+- Distance, when location is available.
+- Materials accepted.
+- Indicative buying rates.
+- Rating, if real ratings exist.
+- Contact options.
+
+Include:
+
+- Search.
+- Material filters.
+- Location filters.
+- Distance sorting.
+- Recycler details screen.
+
+Only display verified recyclers as verified.
+
+Do not invent recycler ratings or verification status.
+
+## 5.9 Scrap Price Board
+
+Display material prices.
+
+Include:
+
+- Material name.
+- Material category.
+- Unit.
+- Indicative price.
+- Price update date.
+- Price history.
+- Recycler-specific buying rates, where available.
+
+Use charts for price history.
+
+All displayed prices must originate from the database.
+
+## 5.10 Offers and Pickup Management
+
+The collector must be able to:
+
+- View recycler offers.
+- Compare offers.
+- Accept an offer.
+- Reject an offer.
+- View pickup details.
+- Confirm handover.
+- View payment status.
+
+Prevent multiple conflicting accepted offers for the same listing.
+
+## 5.11 Earnings Screen
+
+Display:
+
+- Total earnings.
+- Today's earnings.
+- Weekly earnings.
+- Monthly earnings.
+- Pending payments.
+- Completed payments.
+- Transaction history.
+
+Use charts where appropriate.
+
+Do not display fake earnings.
+
+## 5.12 Digital Scrap Passport
+
+Generate a QR-based Digital Scrap Passport for eligible scrap listings and completed transactions.
+
+The passport must include:
+
+- Unique passport ID.
+- QR code.
+- Collector reference.
+- Material details.
+- Quantity.
+- Weight.
+- Listing date.
+- Recycler reference, when assigned.
+- Transaction status.
+- Traceability events.
+
+QR codes must reference a secure passport identifier or verification URL.
+
+Do not expose private user information in the QR code.
+
+Allow users to scan QR codes and view authorized passport details.
+
+## 5.13 Notifications
+
+Provide notifications for:
+
+- New recycler offers.
+- Offer acceptance.
+- Pickup scheduling.
+- Pickup reminders.
+- Handover confirmation.
+- Payment completion.
+- Account verification updates.
+
+Use in-app notifications first.
+
+Push notifications can be added using Expo Notifications where supported.
+
+## 5.14 Collector Profile
+
+Include:
+
+- Profile information.
+- Contact details.
+- Address.
+- Preferred language.
+- Account settings.
+- Password reset.
+- Help and support.
+- Logout.
+
+---
+
+# 6. RECYCLER WEB DASHBOARD
+
+Develop a professional, responsive recycler dashboard.
+
+Use React, Vite, JavaScript, Tailwind CSS, React Router, TanStack Query, Zustand, Recharts, Lucide React, and Framer Motion.
+
+## 6.1 Recycler Authentication
+
+Create:
+
+- Login.
+- Registration.
+- Forgot password.
+- Recycler profile setup.
+- Verification status screen.
+
+Recycler registration fields:
+
+- Owner name.
+- Business name.
+- Phone number.
+- Email.
+- Password.
+- Business address.
+- City.
+- State.
+- PIN code.
+- GST number, if applicable.
+- Business registration number, if applicable.
+- Accepted material categories.
+- Business documents.
+
+Verification status:
+
+- Pending.
+- Approved.
+- Rejected.
+- Requires additional information.
+
+Unverified recyclers must not be able to perform restricted activities.
+
+## 6.2 Recycler Dashboard Home
+
+Display:
+
+- Total purchases.
+- Active offers.
+- Pending orders.
+- Completed transactions.
+- Total spending.
+- Material purchase analytics.
+- Recent orders.
+- Recent activity.
+
+Use modern analytics cards and charts.
+
+## 6.3 Scrap Marketplace
+
+Display scrap listings created by collectors.
+
+Each listing must include:
+
+- Scrap title.
+- Material category.
+- Weight.
+- Images.
+- Location.
+- Indicative value.
+- Collector reference.
+- Listing date.
+- Listing status.
+
+Filters:
+
+- Material category.
+- Location.
+- Weight range.
+- Price range.
+- Listing status.
+
+Search must be connected to the backend.
+
+## 6.4 Recycler Buying Rates
+
+Allow recyclers to:
+
+- Add material rates.
+- Edit material rates.
+- Set units.
+- Define minimum quantities.
+- Activate or deactivate rates.
+- View rate history.
+
+Rates must be stored in the database.
+
+## 6.5 Make Offers
+
+Allow verified recyclers to make offers on scrap listings.
+
+Offer fields:
+
+- Offered price.
+- Offered quantity.
+- Pickup proposal.
+- Validity date.
+- Message to collector.
+
+The backend must validate the offer.
+
+The collector must be able to accept or reject the offer.
+
+## 6.6 Order Management
+
+Create order management screens for:
+
+- Pending orders.
+- Accepted orders.
+- Scheduled pickups.
+- Handover pending.
+- Completed orders.
+- Cancelled orders.
+
+Display order details, collector information permitted by role, pickup address, material information, and transaction status.
+
+## 6.7 Handover and Payment
+
+Support transaction recording for:
+
+- Agreed weight.
+- Final price.
+- Final amount.
+- Handover date.
+- Payment method.
+- Payment status.
+- Payment reference.
+
+Payment methods:
+
+- Cash.
+- UPI.
+- Bank transfer.
+- Other.
+
+The platform must record payment details.
+
+Do not claim that the application processes actual payments unless a real payment gateway has been integrated.
+
+## 6.8 Recycler Analytics
+
+Display:
+
+- Material purchase volume.
+- Purchase spending.
+- Monthly transactions.
+- Most purchased materials.
+- Order completion rate.
+- Price trends.
+
+Use Recharts.
+
+All charts must use backend data.
+
+## 6.9 Recycler Profile
+
+Include:
+
+- Business details.
+- Verification documents.
+- Accepted materials.
+- Buying rates.
+- Account settings.
+- Logout.
+
+---
+
+# 7. ADMIN WEB DASHBOARD
+
+Develop a secure admin dashboard.
+
+Use a professional white and parrot-green SaaS dashboard layout.
+
+## 7.1 Admin Authentication
+
+Admin login must be separate from public registration.
+
+Requirements:
+
+- Secure authentication.
+- Role verification.
+- Protected routes.
+- Session management.
+- Logout.
+- Audit logging.
+
+Do not create a public “Create Admin Account” page.
+
+Admin accounts must be provisioned through a secure setup process.
+
+## 7.2 Admin Dashboard Home
+
+Display:
+
+- Total collectors.
+- Total recyclers.
+- Verified recyclers.
+- Pending recycler verifications.
+- Total scrap listings.
+- Active listings.
+- Total transactions.
+- Total recorded transaction value.
+- Material volume collected.
+- Platform activity.
+
+Charts:
+
+- Collector growth.
+- Recycler growth.
+- Monthly transaction trends.
+- Material distribution.
+- Recycling volume.
+- Transaction status distribution.
+
+## 7.3 Collector Management
+
+Admin must be able to:
+
+- View collectors.
+- Search collectors.
+- Filter collectors.
+- View collector profiles.
+- View listings.
+- View transaction history.
+- Suspend accounts where permitted.
+- Reactivate accounts where permitted.
+
+## 7.4 Recycler Verification
+
+Admin must be able to:
+
+- View recycler applications.
+- Review submitted documents.
+- Approve recyclers.
+- Reject recyclers.
+- Request additional information.
+- Record verification notes.
+- View verification history.
+
+All verification changes must be logged.
+
+## 7.5 Material Management
+
+Admin must be able to:
+
+- Create material categories.
+- Edit material categories.
+- Activate or deactivate categories.
+- Manage subcategories.
+- Manage material units.
+- Set indicative prices.
+- Update indicative prices.
+- View price history.
+
+## 7.6 Listing Management
+
+Admin must be able to:
+
+- View scrap listings.
+- Search listings.
+- Filter by status.
+- View listing details.
+- Monitor suspicious listings.
+- Restrict listings when necessary.
+
+## 7.7 Transaction Management
+
+Admin must be able to:
+
+- View transactions.
+- Search transactions.
+- Filter transactions.
+- View payment status.
+- View transaction details.
+- Monitor cancelled transactions.
+- Review complaints.
+
+## 7.8 Complaints and Support
+
+Create a complaint management module.
+
+Fields:
+
+- Complaint ID.
+- User.
+- Related transaction.
+- Complaint category.
+- Description.
+- Status.
+- Assigned admin.
+- Resolution notes.
+- Created date.
+- Updated date.
+
+Statuses:
+
+- Open.
+- In Progress.
+- Resolved.
+- Closed.
+
+## 7.9 Audit Logs
+
+Maintain an audit log for important administrative and financial operations.
+
+Include:
+
+- Actor.
+- Role.
+- Action.
+- Entity type.
+- Entity ID.
+- Timestamp.
+- Relevant metadata.
+
+Audit logs must be append-only for ordinary application users.
+
+---
+
+# 8. BACKEND ARCHITECTURE
+
+Develop the backend using Python and FastAPI.
+
+The backend must provide centralized business logic for all three applications.
+
+## Required Backend Responsibilities
+
+- Authentication token validation.
+- Role-based access control.
+- Request validation.
+- Business logic.
+- Database access.
+- Listing management.
+- Recycler offer management.
+- Order management.
+- Payment record management.
+- QR Scrap Passport management.
+- Notifications.
+- Image upload authorization.
+- Traceability.
+- Analytics.
+- Audit logging.
+- Offline synchronization.
+
+## Backend Rules
+
+- Use SQLAlchemy for database operations.
+- Use Pydantic for validation.
+- Use Alembic for database migrations.
+- Use modular routers.
+- Use dependency injection.
+- Use environment variables.
+- Use proper HTTP status codes.
+- Use structured error responses.
+- Add pagination.
+- Add filtering.
+- Add sorting.
+- Avoid putting all business logic in one file.
+- Do not expose database credentials.
+- Do not trust frontend role values.
+- Validate user permissions on every protected operation.
+
+## Suggested Backend Structure
+
+```text
+backend/
+├── app/
+│   ├── main.py
+│   ├── core/
+│   │   ├── config.py
+│   │   ├── security.py
+│   │   ├── permissions.py
+│   │   └── exceptions.py
+│   ├── db/
+│   │   ├── session.py
+│   │   └── base.py
+│   ├── models/
+│   ├── schemas/
+│   ├── repositories/
+│   ├── services/
+│   ├── api/
+│   │   └── v1/
+│   │       ├── auth.py
+│   │       ├── collectors.py
+│   │       ├── recyclers.py
+│   │       ├── materials.py
+│   │       ├── listings.py
+│   │       ├── offers.py
+│   │       ├── orders.py
+│   │       ├── payments.py
+│   │       ├── passports.py
+│   │       ├── notifications.py
+│   │       ├── analytics.py
+│   │       ├── complaints.py
+│   │       └── admin.py
+│   └── utils/
+├── migrations/
+├── tests/
+├── requirements.txt
+├── .env.example
+└── README.md
+```
+
+## API Documentation
+
+Use FastAPI's built-in API documentation.
+
+The application must provide:
+
+- `/docs`
+- `/redoc`
+- `/health`
+
+The health endpoint must return the API status.
+
+---
+
+# 9. DATABASE DESIGN — SUPABASE POSTGRESQL
+
+Design a normalized, relational database using Supabase PostgreSQL.
+
+Use UUID primary keys where appropriate.
+
+Use foreign keys, indexes, constraints, timestamps, and appropriate numeric types.
+
+Use UTC timestamps in storage and convert to local time for display.
+
+## Required Tables
+
+### 1. profiles
+
+Common authenticated user profile information.
+
+Fields:
+
+- id
+- auth_user_id
+- full_name
+- email
+- phone
+- role
+- preferred_language
+- account_status
+- created_at
+- updated_at
+
+Roles:
+
+- collector
+- recycler
+- admin
+
+The role must be controlled by secure backend logic.
+
+### 2. collectors
+
+Fields:
+
+- id
+- profile_id
+- address
+- city
+- state
+- pin_code
+- latitude
+- longitude
+- created_at
+- updated_at
+
+### 3. recyclers
+
+Fields:
+
+- id
+- profile_id
+- business_name
+- owner_name
+- address
+- city
+- state
+- pin_code
+- latitude
+- longitude
+- verification_status
+- gst_number
+- registration_number
+- created_at
+- updated_at
+
+### 4. recycler_documents
+
+Fields:
+
+- id
+- recycler_id
+- document_type
+- storage_path
+- verification_status
+- reviewed_by
+- review_notes
+- created_at
+- updated_at
+
+### 5. materials
+
+Fields:
+
+- id
+- name
+- category
+- subtype
+- unit
+- description
+- is_active
+- created_at
+- updated_at
+
+### 6. material_lots
+
+Fields:
+
+- id
+- collector_id
+- material_id
+- title
+- description
+- quantity
+- weight
+- weight_unit
+- estimated_value
+- condition
+- pickup_address
+- latitude
+- longitude
+- preferred_pickup_date
+- preferred_pickup_time
+- status
+- created_at
+- updated_at
+
+### 7. material_lot_images
+
+Fields:
+
+- id
+- material_lot_id
+- storage_path
+- created_at
+
+### 8. recycler_material_rates
+
+Fields:
+
+- id
+- recycler_id
+- material_id
+- rate
+- unit
+- minimum_quantity
+- is_active
+- created_at
+- updated_at
+
+### 9. price_history
+
+Fields:
+
+- id
+- material_id
+- price
+- unit
+- source
+- effective_date
+- created_at
+
+### 10. recycler_offers
+
+Fields:
+
+- id
+- material_lot_id
+- recycler_id
+- offered_price
+- offered_quantity
+- pickup_proposal
+- valid_until
+- message
+- status
+- created_at
+- updated_at
+
+### 11. orders
+
+Fields:
+
+- id
+- material_lot_id
+- accepted_offer_id
+- collector_id
+- recycler_id
+- agreed_price
+- agreed_quantity
+- final_weight
+- final_amount
+- pickup_date
+- pickup_time
+- order_status
+- created_at
+- updated_at
+
+### 12. handover_records
+
+Fields:
+
+- id
+- order_id
+- collector_confirmation
+- recycler_confirmation
+- handover_date
+- final_weight
+- notes
+- created_at
+
+### 13. payments
+
+Fields:
+
+- id
+- order_id
+- amount
+- payment_method
+- payment_status
+- payment_reference
+- paid_at
+- created_at
+- updated_at
+
+### 14. scrap_passports
+
+Fields:
+
+- id
+- material_lot_id
+- passport_code
+- qr_payload
+- status
+- created_at
+- updated_at
+
+### 15. traceability_events
+
+Fields:
+
+- id
+- passport_id
+- event_type
+- actor_id
+- location
+- metadata
+- created_at
+
+### 16. notifications
+
+Fields:
+
+- id
+- user_id
+- title
+- message
+- notification_type
+- related_entity_type
+- related_entity_id
+- read_at
+- created_at
+
+### 17. complaints
+
+Fields:
+
+- id
+- user_id
+- order_id
+- category
+- description
+- status
+- assigned_admin
+- resolution_notes
+- created_at
+- updated_at
+
+### 18. sync_records
+
+Fields:
+
+- id
+- user_id
+- client_operation_id
+- operation_type
+- entity_type
+- entity_id
+- sync_status
+- error_message
+- created_at
+- updated_at
+
+### 19. audit_logs
+
+Fields:
+
+- id
+- actor_id
+- actor_role
+- action
+- entity_type
+- entity_id
+- metadata
+- created_at
+
+## Database Requirements
+
+- Create SQL migrations.
+- Add indexes for frequently searched fields.
+- Add foreign-key constraints.
+- Add unique constraints where necessary.
+- Prevent duplicate client sync operations.
+- Use database transactions for critical workflows.
+- Use secure Row Level Security policies.
+- Do not allow clients to modify their own role to admin.
+- Do not allow collectors to access other collectors' private records.
+- Do not allow recyclers to access private records unrelated to their authorized orders.
+- Restrict administrative operations to authorized admins.
+
+Create a complete Supabase SQL setup script and migration instructions.
+
+---
+
+# 10. SUPABASE AUTHENTICATION AND SECURITY
+
+Use Supabase Auth as the identity provider.
+
+FastAPI must validate the Supabase JWT and use the authenticated identity to determine permissions.
+
+## Authentication Flow
+
+1. User registers or logs in.
+2. Supabase Auth authenticates the user.
+3. The application receives the authentication session.
+4. The frontend securely stores the session.
+5. The frontend sends the access token to FastAPI.
+6. FastAPI verifies the token.
+7. FastAPI identifies the user and role.
+8. FastAPI authorizes the operation.
+9. The backend returns permitted data.
+
+## Security Requirements
+
+- Never trust frontend-supplied roles.
+- Never expose service-role keys.
+- Use environment variables.
+- Validate JWT signatures and claims.
+- Enforce ownership checks.
+- Use role-based access control.
+- Apply RLS policies.
+- Validate uploaded files.
+- Restrict file types and file sizes.
+- Use signed URLs or controlled access for private files.
+- Prevent unauthorized access to verification documents.
+- Protect against duplicate transaction creation.
+- Use secure database transactions.
+- Keep audit logs.
+- Do not store passwords in application tables.
+
+Provide a `.env.example` file with placeholder values.
+
+---
+
+# 11. CORE BUSINESS WORKFLOW
+
+Implement this complete end-to-end workflow.
+
+## Workflow: Collector to Recycler
+
+1. Collector creates an account.
+2. Collector logs in.
+3. Collector creates a scrap listing.
+4. Collector uploads scrap images.
+5. The backend calculates an indicative value.
+6. The listing becomes available in the recycler marketplace.
+7. A verified recycler views the listing.
+8. Recycler makes an offer.
+9. Collector receives a notification.
+10. Collector compares available offers.
+11. Collector accepts an offer.
+12. The system creates an order.
+13. The listing becomes unavailable for conflicting offers.
+14. Recycler and collector coordinate pickup or handover.
+15. Final weight is recorded.
+16. Final amount is confirmed.
+17. Handover is confirmed.
+18. Payment is recorded.
+19. The transaction is completed.
+20. Traceability events are recorded.
+21. The Digital Scrap Passport is updated.
+22. Both users can view transaction history.
+23. Admin can monitor the transaction.
+
+Every step must use real backend and database operations.
+
+Do not implement only frontend navigation for this workflow.
+
+---
+
+# 12. ORDER AND LISTING STATUS MANAGEMENT
+
+Use clear, controlled status transitions.
+
+## Material Listing Status
+
+- draft
+- available
+- offer_received
+- offer_accepted
+- pickup_scheduled
+- completed
+- cancelled
+
+## Recycler Offer Status
+
+- pending
+- accepted
+- rejected
+- withdrawn
+- expired
+
+## Order Status
+
+- accepted
+- pickup_scheduled
+- handover_pending
+- handed_over
+- payment_pending
+- completed
+- cancelled
+- disputed
+
+## Payment Status
+
+- pending
+- paid
+- failed
+- refunded
+
+The backend must validate status transitions.
+
+Do not allow users to directly update protected statuses without the appropriate operation.
+
+For example, a collector must not be able to mark a payment as paid without a valid payment or authorized payment confirmation.
+
+Use database transactions for offer acceptance, order creation, and related listing status updates.
+
+---
+
+# 13. OFFLINE-FIRST MOBILE SUPPORT
+
+The Collector Mobile App must support limited offline functionality.
+
+Use Expo SQLite for:
+
+- Scrap listing drafts.
+- Cached material categories.
+- Cached price information.
+- Pending listing operations.
+- Pending sync queue.
+- Local app preferences.
+
+When the network becomes available:
+
+1. Detect pending operations.
+2. Send operations to the backend.
+3. Use unique client operation IDs.
+4. Prevent duplicate operations.
+5. Record sync status.
+6. Handle failed synchronization.
+7. Allow retry.
+8. Show the user the sync status.
+
+Do not claim that a transaction is completed while it is only stored locally.
+
+Display clear states such as:
+
+- Saved locally.
+- Waiting to sync.
+- Syncing.
+- Synced.
+- Sync failed.
+
+---
+
+# 14. AI AND SMART FEATURES
+
+Implement AI features only where they provide genuine value.
+
+## Feature 1: Indicative Scrap Price Estimation
+
+Use material category, weight, and current indicative prices to estimate scrap value.
+
+The system must clearly state that this is an estimate.
+
+Do not claim that the model is trained on real market data if no dataset is available.
+
+## Feature 2: Recycler Matching
+
+Recommend recyclers based on:
+
+- Material category.
+- Recycler buying rates.
+- Location.
+- Verification status.
+- Availability.
+
+Start with a transparent rule-based matching algorithm.
+
+A machine-learning model can be added later when sufficient data is available.
+
+## Feature 3: Voice Assistance
+
+Support basic voice guidance in:
+
+- Marathi.
+- Hindi.
+- English.
+
+Use Expo Speech for supported text-to-speech functionality.
+
+Provide clear fallback behavior when voice features are unavailable.
+
+## Feature 4: Future Analytics
+
+Design the architecture to support:
+
+- Material demand forecasting.
+- Price trend analysis.
+- Collection volume forecasting.
+- Recycler recommendations.
+
+Do not add complex machine-learning features that prevent completion of the core application.
+
+---
+
+# 15. MULTILINGUAL SUPPORT
+
+Support:
+
+- Marathi.
+- Hindi.
+- English.
+
+Use a localization system.
+
+All major mobile UI labels should be translatable.
+
+Include:
+
+- Login.
+- Registration.
+- Dashboard.
+- Scrap listing.
+- Material categories.
+- Offers.
+- Earnings.
+- Pickup.
+- Notifications.
+- Profile.
+
+The selected language must persist between sessions.
+
+Do not hardcode all UI text directly into components.
+
+---
+
+# 16. PROJECT STRUCTURE
+
+Create a clean monorepo structure.
+
+```text
+kabadiwala-connect/
+│
+├── backend/
+│   ├── app/
+│   ├── migrations/
+│   ├── tests/
+│   ├── requirements.txt
+│   ├── .env.example
+│   └── README.md
+│
+├── mobile-app/
+│   ├── app/
+│   │   ├── _layout.js
+│   │   ├── index.js
+│   │   ├── welcome.js
+│   │   ├── (auth)/
+│   │   │   ├── login.js
+│   │   │   ├── register.js
+│   │   │   └── forgot-password.js
+│   │   ├── (collector)/
+│   │   │   ├── _layout.js
+│   │   │   ├── index.js
+│   │   │   ├── my-scrap.js
+│   │   │   ├── create-lot.js
+│   │   │   ├── lot-details/
+│   │   │   ├── offers.js
+│   │   │   ├── earnings.js
+│   │   │   ├── price-board.js
+│   │   │   ├── passport.js
+│   │   │   ├── history.js
+│   │   │   └── profile.js
+│   │   └── recycler/
+│   ├── components/
+│   ├── services/
+│   ├── stores/
+│   ├── database/
+│   ├── hooks/
+│   ├── constants/
+│   ├── assets/
+│   ├── package.json
+│   └── README.md
+│
+├── recycler-dashboard/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   ├── services/
+│   │   ├── stores/
+│   │   ├── hooks/
+│   │   ├── routes/
+│   │   └── assets/
+│   ├── package.json
+│   └── README.md
+│
+├── admin-dashboard/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   ├── services/
+│   │   ├── stores/
+│   │   ├── hooks/
+│   │   ├── routes/
+│   │   └── assets/
+│   ├── package.json
+│   └── README.md
+│
+├── supabase/
+│   ├── migrations/
+│   ├── seed.sql
+│   └── config.toml
+│
+├── docs/
+│   ├── architecture.md
+│   ├── database.md
+│   ├── api.md
+│   └── testing.md
+│
+├── .gitignore
+├── README.md
+└── docker-compose.yml
+```
+
+You may adjust the structure if needed, but keep the project modular and understandable.
+
+---
+
+# 17. API ENDPOINTS
+
+Create versioned REST APIs under:
+
+`/api/v1`
+
+Use appropriate HTTP methods and response codes.
+
+## Authentication and Profile
+
+```text
+GET    /api/v1/auth/me
+GET    /api/v1/profiles/me
+PATCH  /api/v1/profiles/me
+```
+
+## Materials
+
+```text
+GET    /api/v1/materials
+GET    /api/v1/materials/{material_id}
+GET    /api/v1/materials/prices
+GET    /api/v1/materials/{material_id}/price-history
+```
+
+## Collector Listings
+
+```text
+POST   /api/v1/listings
+GET    /api/v1/listings/my
+GET    /api/v1/listings/{listing_id}
+PATCH  /api/v1/listings/{listing_id}
+DELETE /api/v1/listings/{listing_id}
+POST   /api/v1/listings/{listing_id}/images
+```
+
+## Recycler Marketplace
+
+```text
+GET    /api/v1/marketplace/listings
+GET    /api/v1/marketplace/listings/{listing_id}
+```
+
+## Recycler Offers
+
+```text
+POST   /api/v1/offers
+GET    /api/v1/offers/my
+GET    /api/v1/offers/{offer_id}
+POST   /api/v1/offers/{offer_id}/accept
+POST   /api/v1/offers/{offer_id}/reject
+POST   /api/v1/offers/{offer_id}/withdraw
+```
+
+## Orders
+
+```text
+GET    /api/v1/orders
+GET    /api/v1/orders/{order_id}
+POST   /api/v1/orders/{order_id}/schedule-pickup
+POST   /api/v1/orders/{order_id}/confirm-handover
+POST   /api/v1/orders/{order_id}/complete
+```
+
+## Payments
+
+```text
+GET    /api/v1/payments
+GET    /api/v1/payments/{payment_id}
+POST   /api/v1/orders/{order_id}/payments
+```
+
+## Scrap Passport
+
+```text
+POST   /api/v1/passports
+GET    /api/v1/passports/{passport_code}
+GET    /api/v1/passports/{passport_code}/events
+```
+
+## Notifications
+
+```text
+GET    /api/v1/notifications
+POST   /api/v1/notifications/{notification_id}/read
+```
+
+## Recycler
+
+```text
+GET    /api/v1/recyclers
+GET    /api/v1/recyclers/{recycler_id}
+GET    /api/v1/recyclers/me
+PATCH  /api/v1/recyclers/me
+POST   /api/v1/recyclers/me/documents
+GET    /api/v1/recyclers/me/rates
+POST   /api/v1/recyclers/me/rates
+PATCH  /api/v1/recyclers/me/rates/{rate_id}
+```
+
+## Admin
+
+```text
+GET    /api/v1/admin/analytics
+GET    /api/v1/admin/collectors
+GET    /api/v1/admin/recyclers
+GET    /api/v1/admin/recyclers/pending
+POST   /api/v1/admin/recyclers/{recycler_id}/approve
+POST   /api/v1/admin/recyclers/{recycler_id}/reject
+GET    /api/v1/admin/listings
+GET    /api/v1/admin/transactions
+GET    /api/v1/admin/complaints
+PATCH  /api/v1/admin/complaints/{complaint_id}
+GET    /api/v1/admin/audit-logs
+```
+
+These endpoints are a starting specification. Add other endpoints required for complete functionality.
+
+Every endpoint must include:
+
+- Authentication where required.
+- Role-based authorization.
+- Validation.
+- Appropriate error responses.
+- Database integration.
+- API documentation.
+
+---
+
+# 18. DEMO DATA
+
+Create realistic demonstration data for local testing.
+
+Seed data should include:
+
+- 5 demo collectors.
+- 5 demo recyclers.
+- 1 admin account provisioned securely.
+- 12 material categories.
+- Indicative material prices.
+- Recycler buying rates.
+- 15 demo scrap listings.
+- Sample recycler offers.
+- Sample orders.
+- Sample payments.
+- Sample traceability records.
+- Sample notifications.
+
+Use realistic Indian locations and currency formatting in the UI.
+
+The demo dataset may use illustrative prices, but the application must label them as demo or indicative data.
+
+Do not use demo data as actual market prices.
+
+Do not create insecure production credentials.
+
+Provide instructions for creating test accounts through Supabase Auth and securely assigning their roles.
+
+---
+
+# 19. TESTING REQUIREMENTS
+
+Test the entire application.
+
+## Backend Testing
+
+Use Pytest.
+
+Test:
+
+- Authentication.
+- Role-based permissions.
+- Collector listing creation.
+- Listing ownership.
+- Recycler offer creation.
+- Offer acceptance.
+- Order creation.
+- Duplicate offer acceptance prevention.
+- Pickup scheduling.
+- Handover.
+- Payment record creation.
+- Scrap Passport generation.
+- Traceability.
+- Admin verification.
+- Unauthorized access.
+- Invalid data.
+- Offline synchronization endpoints.
+
+## Mobile Testing
+
+Test:
+
+- Splash screen.
+- Session restoration.
+- Login.
+- Registration.
+- Collector dashboard.
+- Scrap listing form.
+- Image upload.
+- Offers.
+- Earnings.
+- QR passport.
+- Navigation.
+- Logout.
+- Offline drafts.
+- Sync failure and retry.
+
+## Web Testing
+
+Test:
+
+- Recycler authentication.
+- Recycler verification.
+- Marketplace.
+- Offers.
+- Orders.
+- Payments.
+- Admin authentication.
+- Admin verification.
+- Material management.
+- Analytics.
+- Responsive layouts.
+- Protected routes.
+
+## End-to-End Acceptance Test
+
+The following scenario must work:
+
+1. Create a collector account.
+2. Log in through the mobile app.
+3. Create a scrap listing.
+4. Upload an image.
+5. Confirm that the listing is saved in Supabase.
+6. Log in as a verified recycler.
+7. View the listing in the marketplace.
+8. Make an offer.
+9. Log back in as the collector.
+10. Accept the offer.
+11. Verify that an order is created.
+12. Schedule pickup.
+13. Confirm handover.
+14. Record payment.
+15. Complete the transaction.
+16. Generate or update the Scrap Passport.
+17. View the transaction in the admin dashboard.
+
+The same records must appear in all relevant interfaces.
+
+---
+
+# 20. DEVELOPMENT EXECUTION PLAN
+
+Build the application incrementally.
+
+Do not attempt to generate the entire application in one untested code dump.
+
+## Phase 1 — Project Setup
+
+- Inspect the existing project directory.
+- Preserve existing working code where appropriate.
+- Create the monorepo.
+- Set up backend.
+- Set up mobile app.
+- Set up recycler dashboard.
+- Set up admin dashboard.
+- Install dependencies.
+- Configure environment variables.
+- Establish the Parrot Green and White theme.
+
+## Phase 2 — Supabase and Database
+
+- Configure Supabase.
+- Create database tables.
+- Create migrations.
+- Create relationships.
+- Create RLS policies.
+- Create storage buckets.
+- Configure authentication.
+- Create seed data.
+- Test database access.
+
+## Phase 3 — Backend
+
+- Implement FastAPI.
+- Implement authentication.
+- Implement permissions.
+- Implement materials.
+- Implement listings.
+- Implement offers.
+- Implement orders.
+- Implement payments.
+- Implement passports.
+- Implement notifications.
+- Implement admin endpoints.
+- Add backend tests.
+
+## Phase 4 — Mobile Authentication
+
+Build the Collector Mobile App in this order:
+
+1. Splash screen.
+2. Welcome screen.
+3. Login screen.
+4. Registration screen.
+5. Session persistence.
+6. Protected routing.
+7. Collector dashboard.
+
+Test every screen before moving forward.
+
+## Phase 5 — Collector Features
+
+Implement:
+
+1. Create scrap listing.
+2. Upload images.
+3. Scrap price board.
+4. Recycler discovery.
+5. Offers.
+6. Pickup management.
+7. Earnings.
+8. QR Scrap Passport.
+9. Transaction history.
+10. Notifications.
+11. Profile.
+12. Offline drafts and synchronization.
+
+## Phase 6 — Recycler Dashboard
+
+Implement:
+
+1. Authentication.
+2. Recycler registration.
+3. Verification.
+4. Dashboard.
+5. Marketplace.
+6. Buying rates.
+7. Offers.
+8. Orders.
+9. Handover.
+10. Payment records.
+11. Analytics.
+12. Profile.
+
+## Phase 7 — Admin Dashboard
+
+Implement:
+
+1. Admin login.
+2. Dashboard analytics.
+3. Collector management.
+4. Recycler management.
+5. Recycler verification.
+6. Material management.
+7. Price management.
+8. Listing management.
+9. Transaction management.
+10. Complaint management.
+11. Audit logs.
+
+## Phase 8 — Integration
+
+Connect all applications to the same FastAPI backend.
+
+Verify:
+
+- Authentication.
+- Role-based access.
+- Shared data.
+- Real-time updates where supported.
+- Image storage.
+- Database operations.
+- Notifications.
+- Transaction workflow.
+
+## Phase 9 — Testing and Finalization
+
+- Run backend tests.
+- Run frontend tests.
+- Fix errors.
+- Test the complete workflow.
+- Test responsive layouts.
+- Test mobile on Expo Go.
+- Prepare setup instructions.
+- Prepare deployment instructions.
+- Prepare demo data.
+- Document limitations.
+
+---
+
+# 21. LOCAL DEVELOPMENT REQUIREMENTS
+
+The project must be easy to run on Windows using VS Code and PowerShell.
+
+Provide exact setup instructions for:
+
+- Node.js.
+- Python.
+- Expo.
+- Supabase.
+- FastAPI.
+- PostgreSQL connectivity.
+- Environment variables.
+- Dependency installation.
+- Database migrations.
+- Seed data.
+- Backend startup.
+- Mobile startup.
+- Recycler dashboard startup.
+- Admin dashboard startup.
+
+Include the commands to start each application.
+
+For mobile development, provide Expo Go instructions.
+
+For backend development, provide virtual environment setup commands for Windows PowerShell.
+
+Do not assume that the user already has a working environment.
+
+---
+
+# 22. FINAL DELIVERABLES
+
+At the end of development, deliver:
+
+1. Complete Collector Mobile App source code.
+2. Complete Recycler Dashboard source code.
+3. Complete Admin Dashboard source code.
+4. Complete FastAPI backend.
+5. Supabase database schema.
+6. Database migrations.
+7. RLS policies.
+8. Supabase Storage configuration.
+9. Seed data.
+10. `.env.example` files.
+11. API documentation.
+12. README files.
+13. Local setup instructions.
+14. Testing instructions.
+15. Demo account setup instructions.
+16. Expo Go run instructions.
+17. Deployment instructions.
+18. Architecture documentation.
+19. Known limitations.
+20. Final end-to-end testing report.
+
+---
+
+# 23. STRICT DEVELOPMENT RULES
+
+Follow these rules throughout development.
+
+1. Do not create only a UI prototype.
+2. Do not create a landing page instead of the application.
+3. Do not use disconnected frontend sample data as the final implementation.
+4. Do not hardcode authentication success.
+5. Do not hardcode user roles.
+6. Do not expose Supabase service-role keys.
+7. Do not create separate primary databases for the three applications.
+8. Do not claim that a feature works unless it has been implemented and tested.
+9. Do not skip backend authorization.
+10. Do not skip database constraints.
+11. Do not skip error handling.
+12. Do not skip loading states.
+13. Do not skip empty states.
+14. Do not skip form validation.
+15. Do not skip mobile session persistence.
+16. Do not use fake payments.
+17. Do not invent real market prices.
+18. Do not create fake recycler verification.
+19. Do not implement all features in one untested code dump.
+20. Do not overwrite existing working files without inspecting them first.
+21. Use modular, maintainable code.
+22. Keep all three interfaces consistent with the Parrot Green and White design system.
+23. Prioritize completion of the core end-to-end workflow before adding optional advanced features.
+24. Explain each development step in simple language.
+25. Provide exact file paths when creating or updating code.
+26. Provide complete code for each requested file, not unexplained fragments.
+27. After each phase, explain how to run and test it.
+28. Fix errors before proceeding to the next phase.
+
+---
+
+# 24. START DEVELOPMENT NOW
+
+Begin by:
+
+1. Inspecting the current project directory and existing code.
+2. Identifying what is already implemented.
+3. Creating or updating the project structure.
+4. Setting up the Supabase database architecture.
+5. Establishing the Parrot Green and White design system.
+6. Implementing the backend foundation.
+7. Implementing authentication.
+8. Building the mobile application flow:
+
+**Splash Screen → Welcome Screen → Login / Sign Up → Collector Dashboard**
+
+After the initial foundation is working, proceed phase by phase.
+
+For every phase:
+
+- Explain the objective.
+- List the files to create or update.
+- Provide the implementation.
+- Explain how to run it.
+- Explain how to test it.
+- Fix any errors before proceeding.
+
+The final goal is a **complete, functional, integrated, modern recycling platform** that can be demonstrated as a real project, with a Collector Mobile App, Recycler Web Dashboard, and Admin Web Dashboard sharing the same Supabase database and FastAPI backend.
+
+Start with Phase 1 now.
